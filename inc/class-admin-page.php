@@ -48,14 +48,11 @@ class Admin_Page {
 	 * @return void
 	 */
 	public static function render(): void {
-		$parser      = new Markdown_Parser();
-		$plugin_path = \dirname( __DIR__ ) . '/';
-		$html        = $parser->parse( $plugin_path . 'docs', 'setup.md' );
 		?>
 		<div class="wrap">
 			<h1><?php \esc_html_e( 'WP Docs Viewer', 'wp-docs-viewer' ); ?></h1>
 			<div class="wp-docs-viewer-content">
-				<?php echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+				<?php echo \do_blocks( '<!-- wp:mfgmicha/docs-viewer --><!-- /wp:mfgmicha/docs-viewer -->' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 			</div>
 		</div>
 		<?php
