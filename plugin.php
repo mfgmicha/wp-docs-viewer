@@ -17,6 +17,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit();
 }
 
+// Load Composer autoloader.
+require_once plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
+
 // Include additional files.
 require_once plugin_dir_path( __FILE__ ) . 'inc/admin-page.php';
 
