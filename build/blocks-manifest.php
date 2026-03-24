@@ -16,6 +16,12 @@ return array(
 		'supports' => array(
 			'html' => false
 		),
+		'attributes' => array(
+			'file' => array(
+				'type' => 'string',
+				'default' => ''
+			)
+		),
 		'textdomain' => 'wp-docs-viewer',
 		'editorScript' => 'file:./index.js',
 		'editorStyle' => 'file:./index.css',

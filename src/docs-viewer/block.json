@@ -11,6 +11,12 @@
 	"supports": {
 		"html": false
 	},
+	"attributes": {
+		"file": {
+			"type": "string",
+			"default": ""
+		}
+	},
 	"textdomain": "wp-docs-viewer",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
