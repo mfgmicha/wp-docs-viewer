@@ -44,7 +44,7 @@ class Markdown_Parser {
 	 *
 	 * @return string The HTML output.
 	 */
-	public function parse_to_html( string $file_path, string $file_name ): string {
+	public function parse( string $file_path, string $file_name ): string {
 		$full_path = \trailingslashit( $file_path ) . $file_name;
 
 		if ( ! \file_exists( $full_path ) ) {

@@ -9,6 +9,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit();
 }
 
+require_once __DIR__ . '/class-markdown-parser.php';
+
+use WpDocsViewer\Markdown_Parser;
+
 /**
  * Add admin subpage under Tools menu.
  */
@@ -44,10 +48,15 @@ if ( ! function_exists( 'wpdocsviewer_render_tools_page' ) ) {
 	 * @return void
 	 */
 	function wpdocsviewer_render_tools_page(): void {
+		$parser      = new Markdown_Parser();
+		$plugin_path = plugin_dir_path( __FILE__ ) . '../';
+		$html        = $parser->parse( $plugin_path . 'docs', 'setup.md' );
 		?>
 		<div class="wrap">
 			<h1><?php esc_html_e( 'WP Docs Viewer', 'wp-docs-viewer' ); ?></h1>
-			<p><?php esc_html_e( 'Welcome to WP Docs Viewer! This plugin helps you display documentation files.', 'wp-docs-viewer' ); ?></p>
+			<div class="wp-docs-viewer-content">
+				<?php echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+			</div>
 		</div>
 		<?php
 	}
