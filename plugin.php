@@ -20,8 +20,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 // Load Composer autoloader.
 require_once plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
 
-// Include additional files.
-require_once plugin_dir_path( __FILE__ ) . 'inc/admin-page.php';
+use WpDocsViewer\Admin_Page;
+
+// Initialize admin page.
+Admin_Page::init();
 
 /**
  * Register the block.

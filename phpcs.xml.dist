@@ -20,6 +20,9 @@
 		<exclude name="Generic.Arrays.DisallowShortArraySyntax.Found" />
 		<exclude name="WordPress.PHP.YodaConditions" />
 	</rule>
+	<rule ref="Universal.Arrays">
+		<exclude name="Universal.Arrays.DisallowShortArraySyntax" />
+	</rule>
 	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
 		<properties>
 			<property name="prefixes" value="mfgmicha" />
