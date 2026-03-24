@@ -1,7 +1,7 @@
 {
-	"name": "template-wp-plugin-blocks",
+	"name": "wp-docs-viewer",
 	"version": "0.1.0",
-	"description": "A clean and minimal WordPress Plugin with block.",
+	"description": "A WordPress block plugin to display documentation files.",
 	"author": "Micha Krapp",
 	"license": "GPL-2.0-or-later",
 	"private": true,

@@ -9,10 +9,10 @@
  *
  * @see https://github.com/WordPress/gutenberg/blob/trunk/docs/reference-guides/block-api/block-metadata.md#render
  *
- * @package mfgmicha/example-dynamic
+ * @package mfgmicha/docs-viewer
  */
 
 ?>
-<p <?php echo get_block_wrapper_attributes(); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
-	<?php esc_html_e( 'Example Dynamic – hello from a dynamic block!', 'example-dynamic' ); ?>
-</p>
+<div <?php echo get_block_wrapper_attributes(); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+	<p>Docs Viewer – hello from a dynamic block!</p>
+</div>
