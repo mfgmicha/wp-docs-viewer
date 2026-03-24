@@ -105,7 +105,7 @@ Uses `.wordpress/blueprint.local.json`:
 ### 2. GitHub Blueprint (`.wordpress/blueprint.json`)
 - Installs plugin from GitHub main branch
 - Use after pushing changes
-- Used for sharing/demo via playground.wordpress.net
+- Used for the preview link in README (playground.wordpress.net)
 
 ### 3. Test Setup (`tests/playground-setup.js`)
 - Inline blueprint for Playwright tests
