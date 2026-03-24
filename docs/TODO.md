@@ -82,5 +82,5 @@ Admin Page (Tools → WP Docs Viewer)
 - [ ] Block can be used to embed single documentation files
 - [ ] Block can be used in browser mode for full file browsing
 - [ ] Markdown files render correctly with code highlighting
-- [ ] Copy shortcode functionality works
+- [ ] Easy mode switching between browser and single file
 - [ ] File list is cached for performance
