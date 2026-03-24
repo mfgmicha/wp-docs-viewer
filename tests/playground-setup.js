@@ -17,14 +17,14 @@ async function startPlaygroundServer() {
 				{
 					hostPath: projectRoot,
 					vfsPath:
-						'/wordpress/wp-content/plugins/template-wp-plugin-blocks',
+						'/wordpress/wp-content/plugins/wp-docs-viewer',
 				},
 			],
 			blueprint: {
 				steps: [
 					{
 						step: 'activatePlugin',
-						pluginPath: 'template-wp-plugin-blocks/plugin.php',
+						pluginPath: 'wp-docs-viewer/plugin.php',
 					},
 					{
 						step: 'wp-cli',

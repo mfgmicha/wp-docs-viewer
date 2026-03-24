@@ -55,10 +55,6 @@ Commit types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore` (lower
 ## Project Structure
 
 - `plugin.php` - Main plugin file (block registration)
-- `.wordpress/blueprint.local.json` - Local development blueprint (used by `npm start`)
-- `.wordpress/blueprint.json` - GitHub/Production blueprint
-
-**Note:** `blueprint.local.json` is for local development with `npm start`. It uses `login: true` to auto-login as admin. The production `blueprint.json` installs the plugin from GitHub, so local changes require pushing first.
 - `src/` - Block source files (each block in its own subfolder)
 - `src/docs-viewer/block.json` - Block metadata
 - `src/docs-viewer/index.js` - Block registration
@@ -95,6 +91,26 @@ To add a new block:
 2. Rename the generated `src/new-block/` folder to match your block slug (without namespace prefix, e.g., `src/your-block-slug/`)
 3. Update the block files with your functionality
 4. Run `npm run build`
+
+## WordPress Playground
+
+Three ways to run WordPress Playground for development:
+
+### 1. Local Development (`npm start`)
+Uses `.wordpress/blueprint.local.json`:
+- Auto-logins as admin (`login: true`)
+- Mounts local plugin files directly
+- Changes are immediately available (no push needed)
+
+### 2. GitHub Blueprint (`.wordpress/blueprint.json`)
+- Installs plugin from GitHub main branch
+- Use after pushing changes
+- Used for sharing/demo via playground.wordpress.net
+
+### 3. Test Setup (`tests/playground-setup.js`)
+- Inline blueprint for Playwright tests
+- Runs on port 8890
+- Mounts local plugin files
 
 ## Requirements
 
