@@ -54,6 +54,7 @@ Commit types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore` (lower
 
 ## Project Structure
 
+- `plugin.php` - Main plugin file (block registration)
 - `.wordpress/blueprint.local.json` - Local development blueprint (used by `npm start`)
 - `.wordpress/blueprint.json` - GitHub/Production blueprint
 
@@ -71,7 +72,6 @@ Commit types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore` (lower
 - `.eslintrc` - ESLint configuration
 - `phpcs.xml.dist` - PHPCS ruleset
 - `phpstan.neon` - PHPStan configuration
-- `.wordpress/blueprint.json` - WordPress Playground blueprint
 
 ## Blocks
 
