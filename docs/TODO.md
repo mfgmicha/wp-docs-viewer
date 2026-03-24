@@ -29,7 +29,7 @@ Admin Page (Tools → WP Docs Viewer)
 | REST_API | `inc/class-rest-api.php` |
 | docs-viewer block | `src/docs-viewer/` |
 
-## REST API (Implemented)
+## REST API (Implemented ✅)
 
 **Endpoints:**
 - `GET /wp/v2/docs-viewer/files` - Get all docs (grouped by source)
@@ -40,24 +40,52 @@ Returns all .md files from:
 - `WP_CONTENT_DIR/themes/*/docs/*.md`
 - `ABSPATH docs/*.md` (if exists)
 
-**Note:** REST API is implemented but needs verification. Currently getting 401 errors in local playground.
+**Tests:** `tests/specs/test-rest-api.spec.js` - 4 tests passing
 
 ## Issue Order
 
 ### Phase 1: Backend Foundation
 1. ~~**#2** - File Discovery REST API~~ ✅ Done
 2. **#6** - Cache file list
+3. **#8** - Security: Reintroduce REST API authentication (see @TODO in code)
 
 ### Phase 2: Admin Page Integration
-3. **#1** - Render block in browser mode
+4. **#1** - Render block in browser mode
 
 ### Phase 3: Block Enhancements
-4. **#3** - File browser UI
-5. **#4** - Shared preview component
-6. **#5** - Mode switching
+5. **#3** - File browser UI
+6. **#4** - Shared preview component
+7. **#5** - Mode switching
 
 ### Phase 4: Future
-7. **#7** - Interactivity API
+8. **#7** - Interactivity API
+
+## Development Workflow
+
+### TDD Style
+
+For each issue, follow this cycle:
+
+1. **Write tests first**
+   ```bash
+   # Create test file or add tests
+   npm run test  # Run tests - expect failures
+   ```
+
+2. **Implement the feature**
+   - Write the minimum code to make tests pass
+
+3. **Verify tests pass**
+   ```bash
+   npm run test  # Run tests - should all pass
+   ```
+
+4. **Commit**
+   ```bash
+   git add -A
+   git commit -m "type: description"
+   git push
+   ```
 
 ## Key Context
 
