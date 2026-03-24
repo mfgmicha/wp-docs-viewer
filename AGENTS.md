@@ -28,9 +28,15 @@ A WordPress block plugin to display documentation files.
 ## Commit Workflow
 
 ```bash
-# Add and commit (bypassing husky hooks if needed)
+# Run pre-commit hooks manually first (optional, husky runs them automatically)
+npm run lint:js
+npm run lint:css
+composer run lint
+composer run analyse
+
+# Add and commit
 git add -A
-git commit --no-verify -m "type: description"
+git commit -m "type: description"
 
 # Push to remote (set remote first if needed)
 git remote add origin <your-repo-url>
@@ -38,6 +44,8 @@ git push -u origin main
 ```
 
 Commit types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore` (lowercase)
+
+**Note:** Never use `git commit --no-verify`. The pre-commit and pre-push hooks are there to ensure code quality.
 
 ## Git Hooks
 
