@@ -46,11 +46,6 @@
 	&.is-selected {
 		background-color: #2271b1;
 		color: #fff;
-
-		.wp-docs-viewer-source-badge {
-			background-color: rgba(255, 255, 255, 0.2);
-			color: #fff;
-		}
 	}
 
 	&:focus {
@@ -70,6 +65,7 @@
 	white-space: nowrap;
 }
 
+// Source badge styles - must come before .is-selected context
 .wp-docs-viewer-source-badge {
 	font-size: 10px;
 	padding: 2px 6px;
@@ -91,6 +87,12 @@
 	&.wp-docs-viewer-source-wordpress {
 		background-color: #fce4ec;
 		color: #c2185b;
+	}
+
+	// Selected state override
+	.wp-docs-viewer-file-item.is-selected & {
+		background-color: rgba(255, 255, 255, 0.2);
+		color: #fff;
 	}
 }
 
@@ -115,7 +117,12 @@
 	}
 
 	// Markdown content styles
-	h1, h2, h3, h4, h5, h6 {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
 		margin-top: 1.5em;
 		margin-bottom: 0.5em;
 
@@ -150,7 +157,8 @@
 		}
 	}
 
-	ul, ol {
+	ul,
+	ol {
 		margin-bottom: 1em;
 		padding-left: 24px;
 	}
@@ -164,7 +172,8 @@
 		border-collapse: collapse;
 		margin-bottom: 1em;
 
-		th, td {
+		th,
+		td {
 			border: 1px solid #e0e0e0;
 			padding: 8px;
 			text-align: left;
