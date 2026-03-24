@@ -105,9 +105,29 @@ $files  = $finder->get_files();
 			$content     = '';
 			$file_exists = false;
 
+			// Convert the file path to an absolute filesystem path.
+			$absolute_path = '';
+
+			// Handle URL-style paths like /wp-content/plugins/.
+			if ( \strpos( $file_path, '/wp-content/' ) === 0 ) {
+				$absolute_path = \WP_CONTENT_DIR . \substr( $file_path, 11 );
+			}
+			// Handle relative paths like plugins/plugin-slug/docs/file.md.
+			elseif ( \strpos( $file_path, 'plugins/' ) === 0 || \strpos( $file_path, 'themes/' ) === 0 ) {
+				$absolute_path = \WP_CONTENT_DIR . '/' . $file_path;
+			}
+			// Handle paths starting with wp-content/.
+			elseif ( \strpos( $file_path, 'wp-content/' ) === 0 ) {
+				$absolute_path = \WP_CONTENT_DIR . '/' . $file_path;
+			}
+			// Already absolute path.
+			elseif ( \file_exists( $file_path ) ) {
+				$absolute_path = $file_path;
+			}
+
 			// Try to parse the file directly.
-			if ( \file_exists( $file_path ) ) {
-				$content     = $parser->parse_from_path( $file_path );
+			if ( $absolute_path && \file_exists( $absolute_path ) ) {
+				$content     = $parser->parse_from_path( $absolute_path );
 				$file_exists = true;
 			}
 			?>
