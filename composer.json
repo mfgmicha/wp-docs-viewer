@@ -3,7 +3,8 @@
 	"description": "A clean and minimal WordPress Plugin with blocks.",
 	"type": "project",
 	"require": {
-		"php": ">=8.3"
+		"php": ">=8.3",
+		"erusev/parsedown": "^1.8"
 	},
 	"require-dev": {
 		"phpcompatibility/php-compatibility": "^9.3",
