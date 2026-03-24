@@ -13,9 +13,11 @@ document.addEventListener('DOMContentLoaded', () => {
 	document
 		.querySelectorAll('.wp-block-mfgmicha-docs-viewer')
 		.forEach((block) => {
-			const filePath = block.dataset.file;
+			// Look for data-file on the inner content div
+			const contentEl = block.querySelector('.wp-docs-viewer-content');
+			const filePath = contentEl ? contentEl.dataset.file : null;
 			if (filePath) {
-				fetchAndRenderDoc(block, filePath);
+				fetchAndRenderDoc(contentEl, filePath);
 			}
 		});
 });
@@ -23,16 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
 /**
  * Fetch and render a documentation file.
  *
- * @param {HTMLElement} block Block element.
- * @param {string}      path  File path.
+ * @param {HTMLElement} container Container element.
+ * @param {string}      path     File path.
  */
-async function fetchAndRenderDoc(block, path) {
-	const container = block.querySelector('.wp-docs-viewer-content');
-
-	if (!container) {
-		return;
-	}
-
+async function fetchAndRenderDoc(container, path) {
 	try {
 		const response = await fetch(
 			`/wp-json/wp/v2/docs-viewer/file?path=${encodeURIComponent(path)}`
