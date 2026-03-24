@@ -10,7 +10,9 @@ test.describe('Admin Page - Docs Viewer', () => {
 		await page.goto('/wp-admin/');
 
 		// Check if WP Docs Viewer link exists under Tools
-		const docsViewerLink = page.locator('#adminmenu a[href*="wp-docs-viewer"]').getByText('WP Docs Viewer');
+		const docsViewerLink = page
+			.locator('#adminmenu a[href*="wp-docs-viewer"]')
+			.getByText('WP Docs Viewer');
 		await expect(docsViewerLink).toBeVisible();
 	});
 
