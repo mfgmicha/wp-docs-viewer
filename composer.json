@@ -7,9 +7,9 @@
 		"erusev/parsedown": "^1.8"
 	},
 	"autoload": {
-		"psr-4": {
-			"WpDocsViewer\\": "inc/"
-		}
+		"classmap": [
+			"inc/"
+		]
 	},
 	"require-dev": {
 		"phpcompatibility/php-compatibility": "^9.3",
