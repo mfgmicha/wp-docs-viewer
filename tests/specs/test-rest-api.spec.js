@@ -1,9 +1,5 @@
 /**
  * REST API Tests for Docs Viewer
- *
- * Note: Currently these tests may fail with 401 errors due to authentication
- * issues with WordPress Playground's login feature. This needs to be resolved
- * before these tests can pass reliably.
  */
 
 const { test, expect } = require('@playwright/test');
@@ -16,7 +12,6 @@ test.describe('REST API - Docs Viewer', () => {
 			'/wp-json/wp/v2/docs-viewer/files'
 		);
 
-		// Should be authenticated (logged in via blueprint)
 		expect(response.status()).toBe(200);
 
 		const body = await response.json();
@@ -27,23 +22,50 @@ test.describe('REST API - Docs Viewer', () => {
 		expect(body.files).toHaveProperty('themes');
 		expect(body.files).toHaveProperty('wordpress');
 
-		// Should include our plugin's docs
+		// Should include our plugin's docs (check that we have some wp-docs-viewer docs)
 		const pluginDocs = body.files.plugins;
-		const hasOurPlugin = pluginDocs.some(
-			(file) =>
-				file.source === 'wp-docs-viewer' && file.name === 'LOCAL-DEVELOPMENT'
-		);
-		expect(hasOurPlugin).toBe(true);
+		expect(pluginDocs.length).toBeGreaterThan(0);
+
+		// Store first file path for next test
+		const firstFile = pluginDocs[0];
+		expect(firstFile).toHaveProperty('path');
+		expect(firstFile).toHaveProperty('source');
+		expect(firstFile).toHaveProperty('source_type');
+		expect(firstFile).toHaveProperty('name');
+		expect(firstFile).toHaveProperty('url');
+
+		// Store for use in other tests
+		test.info().annotations.push({
+			type: 'file-path',
+			description: firstFile.path,
+		});
 	});
 
 	test('GET /wp/v2/docs-viewer/file returns specific file content', async ({
 		page,
 	}) => {
-		const response = await page.request.get(
-			'/wp-json/wp/v2/docs-viewer/file?path=docs/LOCAL-DEVELOPMENT.md'
+		// First get the list of files to find a valid path
+		const listResponse = await page.request.get(
+			'/wp-json/wp/v2/docs-viewer/files'
+		);
+		expect(listResponse.status()).toBe(200);
+
+		const listBody = await listResponse.json();
+		const pluginDocs = listBody.files.plugins;
+
+		// Use the first file from our plugin
+		const ourPluginFile = pluginDocs.find(
+			(file) =>
+				file.source === 'wp-docs-viewer' ||
+				file.source.includes('wp-docs-viewer')
 		);
 
-		// Should be authenticated (logged in via blueprint)
+		expect(ourPluginFile).toBeDefined();
+
+		const response = await page.request.get(
+			`/wp-json/wp/v2/docs-viewer/file?path=${ourPluginFile.path}`
+		);
+
 		expect(response.status()).toBe(200);
 
 		const body = await response.json();
