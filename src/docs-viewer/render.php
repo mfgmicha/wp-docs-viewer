@@ -12,7 +12,16 @@
  * @package mfgmicha/docs-viewer
  */
 
+$file_path = $attributes['file'] ?? '';
+
 ?>
-<div <?php echo get_block_wrapper_attributes(); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
-	<p>Docs Viewer – hello from a dynamic block!</p>
+<div <?php echo get_block_wrapper_attributes(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+?>>
+	<div class="wp-docs-viewer-content" data-file="<?php echo esc_attr($file_path); ?>">
+		<?php if (empty($file_path)) : ?>
+			<p class="wp-docs-viewer-placeholder">
+				<?php esc_html_e('Select a documentation file in the block editor.', 'wp-docs-viewer'); ?>
+			</p>
+		<?php endif; ?>
+	</div>
 </div>
