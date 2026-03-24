@@ -1,9 +1,5 @@
 # WP Docs Viewer - Implementation Plan
 
-## Overview
-
-A WordPress block plugin to display documentation files from various sources (plugins, themes, WordPress core) with a unified file browser experience.
-
 ## Architecture
 
 ### Block Modes
@@ -25,62 +21,41 @@ Admin Page (Tools → WP Docs Viewer)
 
 ## Existing Code
 
-| Component | Path | Description |
-|-----------|------|-------------|
-| Admin_Page | `inc/class-admin-page.php` | Admin page under Tools menu |
-| Markdown_Parser | `inc/class-markdown-parser.php` | Parses MD to HTML using Parsedown |
-| docs-viewer block | `src/docs-viewer/` | Block registration and edit.js |
+| Component | Path |
+|-----------|------|
+| Admin_Page | `inc/class-admin-page.php` |
+| Markdown_Parser | `inc/class-markdown-parser.php` |
+| docs-viewer block | `src/docs-viewer/` |
 
-## Issue Order
-
-### Phase 1: Backend Foundation
-
-1. **#2 - File Discovery REST API** → Create `Docs_Finder` class + REST endpoint
-2. **#6 - Cache file list** → Add transient caching for file discovery
-
-### Phase 2: Admin Page Integration
-
-3. **#1 - Render block in browser mode** → Update Admin_Page to use block
-
-### Phase 3: Block Enhancements
-
-4. **#3 - File browser UI** → Add browser mode to block's `edit.js`
-5. **#4 - Shared preview component** → Enhance Markdown_Parser + shared component
-6. **#5 - Mode switching** → Add switch between browser/single file mode, copy shortcode
-
-### Phase 4: Future Enhancements
-
-7. **#7 - Interactivity API** → Refactor block frontend to use Interactivity API
-
-## REST API Design
+## REST API
 
 **Endpoint:** `GET /wp/v2/docs-viewer/files`
 
-**Response:**
-```json
-{
-  "files": [
-    {
-      "path": "plugins/wp-docs-viewer/docs/LOCAL-DEVELOPMENT.md",
-      "source": "wp-docs-viewer",
-      "source_type": "plugin",
-      "name": "Local Development",
-      "url": "/wp-content/plugins/wp-docs-viewer/docs/LOCAL-DEVELOPMENT.md"
-    }
-  ]
-}
-```
-
-**Sources:**
+Returns all .md files from:
 - `WP_PLUGIN_DIR/*/docs/*.md`
 - `WP_CONTENT_DIR/themes/*/docs/*.md`
 - `ABSPATH docs/*.md` (if exists)
 
-## Acceptance Criteria
+## Issue Order
 
-- [ ] Admins can browse all documentation files from Tools menu
-- [ ] Block can be used to embed single documentation files
-- [ ] Block can be used in browser mode for full file browsing
-- [ ] Markdown files render correctly with code highlighting
-- [ ] Easy mode switching between browser and single file
-- [ ] File list is cached for performance
+### Phase 1: Backend Foundation
+1. **#2** - File Discovery REST API
+2. **#6** - Cache file list
+
+### Phase 2: Admin Page Integration
+3. **#1** - Render block in browser mode
+
+### Phase 3: Block Enhancements
+4. **#3** - File browser UI
+5. **#4** - Shared preview component
+6. **#5** - Mode switching
+
+### Phase 4: Future
+7. **#7** - Interactivity API
+
+## Key Context
+
+- Block in browser mode = no `file` attribute set
+- Admin page renders block via `do_blocks()`
+- Markdown_Parser uses Parsedown library
+- File list cached in transients
