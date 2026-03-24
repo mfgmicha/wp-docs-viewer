@@ -75,6 +75,40 @@ Commit types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore` (lower
 
 A block to display documentation files in a viewer.
 
+#### Block Modes
+
+| Mode | Condition | Description |
+|------|-----------|-------------|
+| **Browser Mode** | No `file` attribute | Full sidebar + preview (file browser) |
+| **Single File Mode** | `file` attribute set | Shows selected markdown file only |
+
+#### REST API Endpoints
+
+- `GET /wp/v2/docs-viewer/files` - Get all docs (grouped by source)
+- `GET /wp/v2/docs-viewer/file?path=...` - Get specific file content
+
+Returns all .md files from:
+- `WP_PLUGIN_DIR/*/docs/*.md`
+- `WP_CONTENT_DIR/themes/*/docs/*.md`
+- `ABSPATH docs/*.md` (if exists)
+
+#### Key Components
+
+| Component | Path |
+|-----------|------|
+| Admin_Page | `inc/class-admin-page.php` |
+| Markdown_Parser | `inc/class-markdown-parser.php` |
+| Docs_Finder | `inc/class-docs-finder.php` |
+| REST_API | `inc/class-rest-api.php` |
+| docs-viewer block | `src/docs-viewer/` |
+
+#### Remaining Issues
+
+- **#6** - Cache file list
+- **#7** - Refactor frontend to use Interactivity API
+- **#8** - Security: Reintroduce REST API authentication
+- **#9** - Styling
+
 ## Adding New Blocks
 
 This template supports multiple blocks. Each block should be in its own subfolder under `src/`. The build script uses `--blocks-manifest` to generate a blocks-manifest.php file that registers all blocks automatically.
