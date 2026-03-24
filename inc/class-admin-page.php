@@ -49,7 +49,7 @@ class Admin_Page {
 	 */
 	public static function render(): void {
 		$parser      = new Markdown_Parser();
-		$plugin_path = \plugin_dir_path( __DIR__ . '/../' );
+		$plugin_path = \dirname( __DIR__ ) . '/';
 		$html        = $parser->parse( $plugin_path . 'docs', 'setup.md' );
 		?>
 		<div class="wrap">
