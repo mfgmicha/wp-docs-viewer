@@ -54,7 +54,10 @@ Commit types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore` (lower
 
 ## Project Structure
 
-- `plugin.php` - Main plugin file (block registration)
+- `.wordpress/blueprint.local.json` - Local development blueprint (used by `npm start`)
+- `.wordpress/blueprint.json` - GitHub/Production blueprint
+
+**Note:** `blueprint.local.json` is for local development with `npm start`. It uses `login: true` to auto-login as admin. The production `blueprint.json` installs the plugin from GitHub, so local changes require pushing first.
 - `src/` - Block source files (each block in its own subfolder)
 - `src/docs-viewer/block.json` - Block metadata
 - `src/docs-viewer/index.js` - Block registration
