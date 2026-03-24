@@ -12,11 +12,7 @@
 
 .wp-docs-viewer-content {
 
-	p {
-		margin-bottom: 1em;
-		line-height: 1.6;
-	}
-
+	// Typography base styles.
 	h1 {
 		font-size: 2em;
 		margin-top: 0;
@@ -42,12 +38,55 @@
 		font-weight: 600;
 	}
 
-	h4,
-	h5,
-	h6 {
+	h4 {
+		font-size: 1em;
 		margin-top: 1.5em;
 		margin-bottom: 0.5em;
 		font-weight: 600;
+	}
+
+	h5 {
+		font-size: 1em;
+		margin-top: 1.5em;
+		margin-bottom: 0.5em;
+		font-weight: 600;
+	}
+
+	h6 {
+		font-size: 1em;
+		margin-top: 1.5em;
+		margin-bottom: 0.5em;
+		font-weight: 600;
+	}
+
+	// Make first heading have no top margin.
+	h1:first-child {
+		margin-top: 0;
+	}
+
+	h2:first-child {
+		margin-top: 0;
+	}
+
+	h3:first-child {
+		margin-top: 0;
+	}
+
+	h4:first-child {
+		margin-top: 0;
+	}
+
+	h5:first-child {
+		margin-top: 0;
+	}
+
+	h6:first-child {
+		margin-top: 0;
+	}
+
+	p {
+		margin-bottom: 1em;
+		line-height: 1.6;
 	}
 
 	code {
@@ -74,7 +113,11 @@
 		}
 	}
 
-	ul,
+	ul {
+		margin-bottom: 1em;
+		padding-left: 24px;
+	}
+
 	ol {
 		margin-bottom: 1em;
 		padding-left: 24px;
@@ -84,26 +127,22 @@
 		margin-bottom: 0.25em;
 	}
 
-	table {
-		width: 100%;
-		border-collapse: collapse;
-		margin-bottom: 1em;
+	th {
+		border: 1px solid #e0e0e0;
+		padding: 8px;
+		text-align: left;
+		background-color: #f5f5f5;
+		font-weight: 600;
+	}
 
-		th,
-		td {
-			border: 1px solid #e0e0e0;
-			padding: 8px;
-			text-align: left;
-		}
+	td {
+		border: 1px solid #e0e0e0;
+		padding: 8px;
+		text-align: left;
+	}
 
-		th {
-			background-color: #f5f5f5;
-			font-weight: 600;
-		}
-
-		tr:nth-child(even) {
-			background-color: #fafafa;
-		}
+	tr:nth-child(even) {
+		background-color: #fafafa;
 	}
 
 	blockquote {
@@ -139,7 +178,213 @@
 	}
 }
 
-// Placeholder and error states
+// ==========================================
+// Browser Mode Styles
+// ==========================================
+
+.wp-docs-viewer-browser {
+	display: flex;
+	gap: 16px;
+	height: 500px;
+}
+
+// Sidebar.
+.wp-docs-viewer-sidebar {
+	width: 280px;
+	flex-shrink: 0;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	overflow: hidden;
+	overflow-y: auto;
+	background: #fff;
+}
+
+// File Group.
+.wp-docs-viewer-file-group {
+	border-bottom: 1px solid #eee;
+
+	&:last-child {
+		border-bottom: none;
+	}
+}
+
+.wp-docs-viewer-group-toggle {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	padding: 12px;
+	background: #f9f9f9;
+	border: none;
+	border-bottom: 1px solid #eee;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: 600;
+	text-align: left;
+
+	&:hover {
+		background: #f0f0f0;
+	}
+}
+
+.wp-docs-viewer-group-title {
+	flex: 1;
+}
+
+.wp-docs-viewer-group-count {
+	color: #666;
+	font-weight: 400;
+	font-size: 12px;
+	margin-right: 8px;
+}
+
+.wp-docs-viewer-group-arrow {
+	font-size: 10px;
+	color: #666;
+}
+
+// File List.
+.wp-docs-viewer-file-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.wp-docs-viewer-file-item {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 10px 12px;
+	cursor: pointer;
+	transition: background-color 0.15s ease;
+
+	&:hover {
+		background-color: #f0f0f0;
+	}
+
+	&.is-selected {
+		background-color: #2271b1;
+		color: #fff;
+	}
+}
+
+.wp-docs-viewer-file-icon {
+	font-size: 16px;
+}
+
+.wp-docs-viewer-file-name {
+	flex: 1;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-size: 13px;
+}
+
+// Source badge - base styles.
+.wp-docs-viewer-source-badge {
+	font-size: 10px;
+	padding: 2px 6px;
+	border-radius: 3px;
+	text-transform: uppercase;
+	background-color: #e0e0e0;
+	color: #555;
+	flex-shrink: 0;
+}
+
+// Selected state for badge must come after base badge styles.
+.wp-docs-viewer-file-item.is-selected .wp-docs-viewer-source-badge {
+	background-color: rgba(255, 255, 255, 0.2);
+	color: #fff;
+}
+
+.wp-docs-viewer-source-plugin {
+	background-color: #e8f5e9;
+	color: #2e7d32;
+}
+
+.wp-docs-viewer-source-theme {
+	background-color: #e3f2fd;
+	color: #1565c0;
+}
+
+.wp-docs-viewer-source-wordpress {
+	background-color: #fce4ec;
+	color: #c2185b;
+}
+
+// Preview Area.
+.wp-docs-viewer-preview-area {
+	flex: 1;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	overflow: hidden;
+	background: #fafafa;
+}
+
+// Preview.
+.wp-docs-viewer-preview {
+	padding: 24px;
+	height: 100%;
+	overflow-y: auto;
+	background: #fff;
+}
+
+.wp-docs-viewer-preview--empty {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 200px;
+	color: #666;
+	background: #f9f9f9;
+}
+
+.wp-docs-viewer-preview--loading {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 200px;
+	color: #666;
+	background: #f9f9f9;
+}
+
+.wp-docs-viewer-preview--error {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 200px;
+	color: #d63638;
+	background: #fcf0f1;
+	border: 1px solid #f0c0c3;
+	margin: 16px;
+	border-radius: 4px;
+}
+
+// ==========================================
+// Single File Mode Styles
+// ==========================================
+
+.wp-docs-viewer-single-file {
+	height: 100%;
+}
+
+.wp-docs-viewer-file-header {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 12px;
+	background: #f9f9f9;
+	border-bottom: 1px solid #eee;
+	margin: -16px -16px 16px -16px;
+	border-radius: 4px 4px 0 0;
+}
+
+.wp-docs-viewer-file-header .wp-docs-viewer-file-name {
+	font-weight: 600;
+}
+
+// ==========================================
+// Common States
+// ==========================================
+
 .wp-docs-viewer-placeholder {
 	color: #666;
 	font-style: italic;
