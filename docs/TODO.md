@@ -54,7 +54,7 @@ Returns all .md files from:
 ### Phase 3: Block Enhancements
 4. ~~**#3** - File browser UI~~ ✅ Done
 5. ~~**#4** - Shared preview component~~ ✅ Done
-6. **#5** - Mode switching
+6. ~~**#5** - Mode switching~~ ✅ Done
 7. **#8** - Security: Reintroduce REST API authentication (see @TODO in code)
 
 ## Development Workflow
