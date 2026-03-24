@@ -47,18 +47,15 @@ Returns all .md files from:
 ### Phase 1: Backend Foundation
 1. ~~**#2** - File Discovery REST API~~ ✅ Done
 2. **#6** - Cache file list
-3. **#8** - Security: Reintroduce REST API authentication (see @TODO in code)
 
 ### Phase 2: Admin Page Integration
-4. **#1** - Render block in browser mode
+3. **#1** - Render block in browser mode
 
 ### Phase 3: Block Enhancements
-5. **#3** - File browser UI
-6. **#4** - Shared preview component
-7. **#5** - Mode switching
-
-### Phase 4: Future
-8. **#7** - Interactivity API
+4. **#3** - File browser UI
+5. **#4** - Shared preview component
+6. **#5** - Mode switching
+7. **#8** - Security: Reintroduce REST API authentication (see @TODO in code)
 
 ## Development Workflow
 
