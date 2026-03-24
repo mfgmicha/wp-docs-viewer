@@ -221,7 +221,7 @@ class Docs_Finder {
 	 */
 	public function get_files( bool $force_refresh = false ): array {
 		if ( ! $force_refresh ) {
-			$cached = \wp_cache_get( self::CACHE_KEY, self::CACHE_GROUP );
+			$cached = \get_transient( self::CACHE_KEY );
 			if ( $cached !== false ) {
 				return $cached;
 			}
@@ -237,7 +237,7 @@ class Docs_Finder {
 			);
 		}
 
-		\wp_cache_set( self::CACHE_KEY, $files, self::CACHE_GROUP, self::CACHE_EXPIRY );
+		\set_transient( self::CACHE_KEY, $files, self::CACHE_EXPIRY );
 
 		return $files;
 	}
@@ -245,9 +245,26 @@ class Docs_Finder {
 	/**
 	 * Clear the cache.
 	 *
-	 * @return bool True if cleared, false otherwise.
+	 * @return void
 	 */
-	public function clear_cache(): bool {
-		return \wp_cache_delete( self::CACHE_KEY, self::CACHE_GROUP );
+	public static function clear_cache(): void {
+		\delete_transient( self::CACHE_KEY );
+	}
+
+	/**
+	 * Initialize cache invalidation hooks.
+	 *
+	 * @return void
+	 */
+	public static function init_hooks(): void {
+		// Clear cache on plugin activation/deactivation.
+		\add_action( 'activated_plugin', [ self::class, 'clear_cache' ] );
+		\add_action( 'deactivated_plugin', [ self::class, 'clear_cache' ] );
+
+		// Clear cache on theme switch.
+		\add_action( 'switch_theme', [ self::class, 'clear_cache' ] );
+
+		// Clear cache when a theme is activated (after switch_theme runs).
+		\add_action( 'after_switch_theme', [ self::class, 'clear_cache' ] );
 	}
 }

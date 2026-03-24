@@ -21,6 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 require_once plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
 
 use WpDocsViewer\Admin_Page;
+use WpDocsViewer\Docs_Finder;
 use WpDocsViewer\REST_API;
 
 // Initialize admin page.
@@ -28,6 +29,9 @@ Admin_Page::init();
 
 // Initialize REST API.
 REST_API::init();
+
+// Initialize cache invalidation hooks.
+Docs_Finder::init_hooks();
 
 /**
  * Register the block.

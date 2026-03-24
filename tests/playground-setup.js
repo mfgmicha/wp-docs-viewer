@@ -16,8 +16,7 @@ async function startPlaygroundServer() {
 			mount: [
 				{
 					hostPath: projectRoot,
-					vfsPath:
-						'/wordpress/wp-content/plugins/wp-docs-viewer',
+					vfsPath: '/wordpress/wp-content/plugins/wp-docs-viewer',
 				},
 			],
 			blueprint: {
