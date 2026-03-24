@@ -53,7 +53,7 @@ class Markdown_Parser {
 
 		$content = \file_get_contents( $full_path ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
 
-		if ( false === $content ) {
+		if ( $content === false ) {
 			return '<p>Could not read file: ' . \esc_html( $full_path ) . '</p>';
 		}
 

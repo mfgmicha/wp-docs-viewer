@@ -18,7 +18,7 @@
 
 	<rule ref="WordPress">
 		<exclude name="Generic.Arrays.DisallowShortArraySyntax.Found" />
-		<exclude name="Generic.ControlStructures.DisallowYodaConditions.Found" />
+		<exclude name="WordPress.PHP.YodaConditions" />
 	</rule>
 	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
 		<properties>
