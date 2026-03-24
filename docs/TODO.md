@@ -25,21 +25,27 @@ Admin Page (Tools → WP Docs Viewer)
 |-----------|------|
 | Admin_Page | `inc/class-admin-page.php` |
 | Markdown_Parser | `inc/class-markdown-parser.php` |
+| Docs_Finder | `inc/class-docs-finder.php` |
+| REST_API | `inc/class-rest-api.php` |
 | docs-viewer block | `src/docs-viewer/` |
 
-## REST API
+## REST API (Implemented)
 
-**Endpoint:** `GET /wp/v2/docs-viewer/files`
+**Endpoints:**
+- `GET /wp/v2/docs-viewer/files` - Get all docs (grouped by source)
+- `GET /wp/v2/docs-viewer/file?path=...` - Get specific file content
 
 Returns all .md files from:
 - `WP_PLUGIN_DIR/*/docs/*.md`
 - `WP_CONTENT_DIR/themes/*/docs/*.md`
 - `ABSPATH docs/*.md` (if exists)
 
+**Note:** REST API is implemented but needs verification. Currently getting 401 errors in local playground.
+
 ## Issue Order
 
 ### Phase 1: Backend Foundation
-1. **#2** - File Discovery REST API
+1. ~~**#2** - File Discovery REST API~~ ✅ Done
 2. **#6** - Cache file list
 
 ### Phase 2: Admin Page Integration
