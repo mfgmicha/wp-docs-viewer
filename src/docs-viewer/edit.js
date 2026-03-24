@@ -16,7 +16,6 @@ import {
 	Spinner,
 	Panel,
 	PanelBody,
-	TextControl,
 	Button,
 } from '@wordpress/components';
 
@@ -328,6 +327,14 @@ export default function Edit({ attributes, setAttributes }) {
 	if (!file) {
 		return (
 			<div {...blockProps}>
+				<div className="wp-docs-viewer-help-text">
+					<em>
+						{__(
+							'Select a documentation file from the list to preview it.',
+							'wp-docs-viewer'
+						)}
+					</em>
+				</div>
 				<FileBrowser
 					onFileSelect={handleFileSelect}
 					selectedFile={selectedFile}
@@ -340,12 +347,12 @@ export default function Edit({ attributes, setAttributes }) {
 	return (
 		<div {...blockProps}>
 			<div className="wp-docs-viewer-toolbar">
-				<TextControl
-					label={__('Selected file', 'wp-docs-viewer')}
-					value={file}
-					disabled
-					className="wp-docs-viewer-file-path"
-				/>
+				<div className="wp-docs-viewer-mode-indicator">
+					<span className="wp-docs-viewer-mode-label">
+						{__('Selected:', 'wp-docs-viewer')}
+					</span>
+					<code className="wp-docs-viewer-selected-path">{file}</code>
+				</div>
 				<Button
 					variant="secondary"
 					onClick={() => {
@@ -353,7 +360,7 @@ export default function Edit({ attributes, setAttributes }) {
 						setSelectedFile('');
 					}}
 				>
-					{__('Clear selection', 'wp-docs-viewer')}
+					{__('Browse all docs', 'wp-docs-viewer')}
 				</Button>
 			</div>
 			<div className="wp-docs-viewer-single-mode">
