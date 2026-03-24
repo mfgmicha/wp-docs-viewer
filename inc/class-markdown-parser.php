@@ -59,4 +59,25 @@ class Markdown_Parser {
 
 		return $this->parsedown->text( $content );
 	}
+
+	/**
+	 * Parse a markdown file to HTML from a full path.
+	 *
+	 * @param string $full_path The full file path.
+	 *
+	 * @return string The HTML output.
+	 */
+	public function parse_from_path( string $full_path ): string {
+		if ( ! \file_exists( $full_path ) ) {
+			return '<p>File not found: ' . \esc_html( $full_path ) . '</p>';
+		}
+
+		$content = \file_get_contents( $full_path ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+
+		if ( $content === false ) {
+			return '<p>Could not read file: ' . \esc_html( $full_path ) . '</p>';
+		}
+
+		return $this->parsedown->text( $content );
+	}
 }
