@@ -1,0 +1,36 @@
+{
+	"extends": [
+		"plugin:@wordpress/eslint-plugin/recommended",
+		"plugin:react/recommended",
+		"plugin:jsx-a11y/recommended",
+		"prettier"
+	],
+	"env": {
+		"browser": true,
+		"es2021": true,
+		"node": true
+	},
+	"parserOptions": {
+		"ecmaVersion": "latest",
+		"sourceType": "module"
+	},
+	"plugins": [
+		"react",
+		"jsx-a11y",
+		"prettier",
+		"jsdoc"
+	],
+	"rules": {
+		"prettier/prettier": "error",
+		"react/react-in-jsx-scope": "off",
+		"react/prop-types": "off",
+		"jsx-a11y/anchor-is-valid": "off",
+		"jsdoc/require-param": "warn",
+		"jsdoc/require-returns": "warn"
+	},
+	"settings": {
+		"react": {
+			"version": "detect"
+		}
+	}
+}

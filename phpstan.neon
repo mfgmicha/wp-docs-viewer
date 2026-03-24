@@ -1,0 +1,13 @@
+includes:
+	- vendor/szepeviktor/phpstan-wordpress/extension.neon
+
+parameters:
+	level: 6
+	paths:
+		- .
+	excludePaths:
+		- .husky
+		- build
+		- docs
+		- vendor (?)
+		- node_modules (?)

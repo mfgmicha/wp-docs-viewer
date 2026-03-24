@@ -1,0 +1,17 @@
+#!/usr/bin/env sh
+
+# Check if build is current
+npm run build
+
+# JS Code quality check
+npm run format
+npm run lint:css
+npm run lint:js
+
+# PHP Code quality check
+composer run lint:fix
+composer run lint
+composer run analyse
+
+# Remove test results
+rm -rf ./test-results

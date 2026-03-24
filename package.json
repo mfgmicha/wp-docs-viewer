@@ -1,0 +1,35 @@
+{
+	"name": "template-wp-plugin-blocks",
+	"version": "0.1.0",
+	"description": "A clean and minimal WordPress Plugin with block.",
+	"author": "Micha Krapp",
+	"license": "GPL-2.0-or-later",
+	"private": true,
+	"scripts": {
+		"start": "wp-playground-cli server --auto-mount --blueprint=.wordpress/blueprint.local.json",
+		"build": "wp-scripts build --blocks-manifest",
+		"new": "wp-create-block --no-plugin --namespace=mfgmicha --target-dir=src/new-block",
+		"format": "wp-scripts format",
+		"lint:css": "wp-scripts lint-style",
+		"lint:js": "wp-scripts lint-js",
+		"packages-update": "wp-scripts packages-update",
+		"zip": "wp-scripts plugin-zip",
+		"prepare": "husky",
+		"test": "playwright test --config=tests/playwright.config.js",
+		"test:ui": "playwright test --ui --config=tests/playwright.config.js"
+	},
+	"devDependencies": {
+		"@commitlint/cli": "^20.4.4",
+		"@commitlint/config-conventional": "^20.4.4",
+		"@playwright/test": "^1.58.2",
+		"@wordpress/create-block": "^4.84.0",
+		"@wordpress/scripts": "^30.27.0",
+		"@wp-playground/cli": "^3.1.11",
+		"eslint-config-prettier": "^10.1.8",
+		"eslint-plugin-jsdoc": "^62.8.0",
+		"eslint-plugin-jsx-a11y": "^6.10.2",
+		"eslint-plugin-prettier": "^5.5.5",
+		"eslint-plugin-react": "^7.37.5",
+		"husky": "^9.1.7"
+	}
+}
