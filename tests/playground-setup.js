@@ -28,7 +28,12 @@ async function startPlaygroundServer() {
 					{
 						step: 'wp-cli',
 						command:
-							'wp post create --post_title="Test Block Post" --post_slug="test-block" --post_type=page --post_status=publish --post_content="<!-- wp:mfgmicha/example-dynamic -->"',
+							'wp post create --post_title="Test Block Browser Mode" --post_slug="test-block-browser" --post_type=page --post_status=publish --post_content="<!-- wp:mfgmicha/docs-viewer /-->',
+					},
+					{
+						step: 'wp-cli',
+						command:
+							'wp post create --post_title="Test Block Single File" --post_slug="test-block-single" --post_type=page --post_status=publish --post_content="<!-- wp:mfgmicha/docs-viewer {\\\"file\\\":\\\"plugins/wp-docs-viewer/docs/SETUP.md\\\"} /-->"',
 					},
 				],
 			},
