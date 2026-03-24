@@ -8,17 +8,6 @@
 	},
 	"steps": [
 		{
-			"step": "installPlugin",
-			"pluginData": {
-				"resource": "url",
-				"url": "https://github.com/mfgmicha/wp-docs-viewer/archive/refs/heads/main.zip"
-			}
-		},
-		{
-			"step": "activatePlugin",
-			"pluginPath": "wp-docs-viewer-main/plugin.php"
-		},
-		{
 			"step": "wp-cli",
 			"command": "wp post create --post_title='Test Block Post' --post_slug='test-block' --post_content='<!-- wp:mfgmicha/docs-viewer -->' --post_status=publish"
 		}
