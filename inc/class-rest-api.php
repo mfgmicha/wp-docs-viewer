@@ -88,7 +88,7 @@ class REST_API {
 	 * @return bool True if permitted, false otherwise.
 	 */
 	public static function check_permission(): bool {
-		return \current_user_can( 'manage_options' );
+		return \is_user_logged_in();
 	}
 
 	/**
