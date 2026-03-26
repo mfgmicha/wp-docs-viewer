@@ -32,6 +32,49 @@ composer run analyse
 npm run zip
 ```
 
+## Installation
+
+### Via Composer
+
+You can install the plugin directly from GitHub using Composer:
+
+```bash
+composer require mfgmicha/wp-docs-viewer:dev-main --prefer-dist
+```
+
+Or if you want a specific version/tag:
+
+```bash
+composer require mfgmicha/wp-docs-viewer:^1.0 --prefer-dist
+```
+
+Then move the plugin to your `wp-content/plugins/` directory:
+
+```bash
+mv vendor/mfgmicha/wp-docs-viewer wp-content/plugins/
+```
+
+Or add this to your `composer.json` to install directly to the correct location:
+
+```json
+"repositories": [
+    {
+        "type": "vcs",
+        "url": "https://github.com/mfgmicha/wp-docs-viewer"
+    }
+],
+"require": {
+    "mfgmicha/wp-docs-viewer": "^1.0"
+},
+"extra": {
+    "installer-paths": {
+        "wp-content/plugins/{$name}/": ["mfgmicha/wp-docs-viewer"]
+    }
+}
+```
+
+With the [Composer Installers](https://github.com/composer/installers) package, the plugin will be automatically installed to the correct location.
+
 ## License
 
 GPLv2 or later
