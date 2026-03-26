@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Load autoloader (supports both Composer and standalone usage).
-require_once plugin_dir_path( __FILE__ ) . 'autoload.php';
+require_once plugin_dir_path( __FILE__ ) . 'lib/autoload.php';
 
 use WpDocsViewer\Admin_Page;
 use WpDocsViewer\Docs_Finder;
