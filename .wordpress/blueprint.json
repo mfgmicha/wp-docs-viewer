@@ -14,6 +14,10 @@
 			}
 		},
 		{
+			"step": "runPHP",
+			"code": "chdir('/wordpress/wp-content/plugins/wp-docs-viewer-main'); passthru('composer install --no-dev --prefer-dist 2>&1', $return); exit($return === 0 ? 0 : 1);"
+		},
+		{
 			"step": "activatePlugin",
 			"pluginPath": "wp-docs-viewer-main/plugin.php"
 		},
