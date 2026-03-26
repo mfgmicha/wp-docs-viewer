@@ -32,7 +32,7 @@ composer install
 
 Try the block instantly in your browser without installing WordPress locally:
 
-**[Open in WordPress Playground](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/mfgmicha/template-wp-plugin-blocks/main/.wordpress/blueprint.json)**
+**[Open in WordPress Playground](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/mfgmicha/wp-docs-viewer/main/.wordpress/blueprint.json)**
 
 ## Adding New Blocks
 
