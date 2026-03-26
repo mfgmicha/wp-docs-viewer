@@ -34,9 +34,15 @@ npm run zip
 
 ## Installation
 
+### Manual Installation
+
+1. Download the plugin as a ZIP file
+2. Upload to your `wp-content/plugins/` directory
+3. Activate the plugin
+
 ### Via Composer
 
-You can install the plugin directly from GitHub using Composer:
+You can also install the plugin directly from GitHub using Composer:
 
 ```bash
 composer require mfgmicha/wp-docs-viewer:dev-main --prefer-dist
@@ -74,6 +80,8 @@ Or add this to your `composer.json` to install directly to the correct location:
 ```
 
 With the [Composer Installers](https://github.com/composer/installers) package, the plugin will be automatically installed to the correct location.
+
+**Note:** When installed via Composer, run `composer install` to install the Parsedown dependency. Without Composer, the plugin bundles Parsedown in the `lib/` folder for standalone use.
 
 ## License
 

@@ -9,5 +9,6 @@ parameters:
 		- .husky
 		- build
 		- docs
+		- lib
 		- vendor (?)
 		- node_modules (?)
